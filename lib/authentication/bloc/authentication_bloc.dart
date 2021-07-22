@@ -8,7 +8,8 @@ import 'package:meteo_sncf/authentication/authentication.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc() : super(const AuthenticationState.unknown()) {
     _authenticationStatusSubscription = _authenticationRepository.status.listen(
       (status) => add(AuthenticationStatusChanged(status)),
@@ -17,7 +18,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   final _authenticationRepository = GetIt.instance.get<AuthenticationService>();
   final _userRepository = GetIt.instance.get<UserRepository>();
-  late StreamSubscription<AuthenticationStatus> _authenticationStatusSubscription;
+  late StreamSubscription<AuthenticationStatus>
+      _authenticationStatusSubscription;
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -45,7 +47,9 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         return const AuthenticationState.unauthenticated();
       case AuthenticationStatus.authenticated:
         final user = await _tryGetUser();
-        return user != null ? AuthenticationState.authenticated(user) : const AuthenticationState.unauthenticated();
+        return user != null
+            ? AuthenticationState.authenticated(user)
+            : const AuthenticationState.unauthenticated();
       default:
         return const AuthenticationState.unknown();
     }

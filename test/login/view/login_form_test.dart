@@ -12,7 +12,8 @@ class FakeLoginEvent extends Fake implements LoginEvent {}
 
 class FakeLoginState extends Fake implements LoginState {}
 
-class MockLoginBloc extends MockBloc<LoginEvent, LoginState> implements LoginBloc {}
+class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
+    implements LoginBloc {}
 
 void main() {
   group('LoginForm', () {
@@ -27,7 +28,8 @@ void main() {
       loginBloc = MockLoginBloc();
     });
 
-    testWidgets('adds LoginEmailChanged to LoginBloc when email is updated', (tester) async {
+    testWidgets('adds LoginEmailChanged to LoginBloc when email is updated',
+        (tester) async {
       const email = 'email';
       when(() => loginBloc.state).thenReturn(const LoginState());
       await tester.pumpWidget(
@@ -49,7 +51,9 @@ void main() {
       ).called(1);
     });
 
-    testWidgets('adds LoginPasswordChanged to LoginBloc when password is updated', (tester) async {
+    testWidgets(
+        'adds LoginPasswordChanged to LoginBloc when password is updated',
+        (tester) async {
       const password = 'password';
       when(() => loginBloc.state).thenReturn(const LoginState());
       await tester.pumpWidget(
@@ -87,7 +91,9 @@ void main() {
       expect(button.enabled, isFalse);
     });
 
-    testWidgets('loading indicator is shown when status is submission in progress', (tester) async {
+    testWidgets(
+        'loading indicator is shown when status is submission in progress',
+        (tester) async {
       when(() => loginBloc.state).thenReturn(
         const LoginState(status: FormzStatus.submissionInProgress),
       );
@@ -105,7 +111,8 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
-    testWidgets('continue button is enabled when status is validated', (tester) async {
+    testWidgets('continue button is enabled when status is validated',
+        (tester) async {
       when(() => loginBloc.state).thenReturn(
         const LoginState(status: FormzStatus.valid),
       );
@@ -123,7 +130,8 @@ void main() {
       expect(button.enabled, isTrue);
     });
 
-    testWidgets('LoginSubmitted is added to LoginBloc when continue is tapped', (tester) async {
+    testWidgets('LoginSubmitted is added to LoginBloc when continue is tapped',
+        (tester) async {
       when(() => loginBloc.state).thenReturn(
         const LoginState(status: FormzStatus.valid),
       );
@@ -141,7 +149,8 @@ void main() {
       verify(() => loginBloc.add(const LoginSubmitted())).called(1);
     });
 
-    testWidgets('shows SnackBar when status is submission failure', (tester) async {
+    testWidgets('shows SnackBar when status is submission failure',
+        (tester) async {
       whenListen(
         loginBloc,
         Stream.fromIterable([

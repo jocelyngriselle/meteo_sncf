@@ -12,7 +12,8 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../helpers/helpers.dart';
 
-class MockWeathersCubit extends MockCubit<WeathersState> implements WeathersCubit {}
+class MockWeathersCubit extends MockCubit<WeathersState>
+    implements WeathersCubit {}
 
 class FakeWeathersState extends Fake implements WeathersState {}
 
@@ -20,7 +21,9 @@ class FakeAuthenticationState extends Fake implements AuthenticationState {}
 
 class FakeAuthenticationEvent extends Fake implements AuthenticationEvent {}
 
-class MockAuthenticationBloc extends MockBloc<AuthenticationEvent, AuthenticationState> implements AuthenticationBloc {}
+class MockAuthenticationBloc
+    extends MockBloc<AuthenticationEvent, AuthenticationState>
+    implements AuthenticationBloc {}
 
 class MockUserRepository extends Mock implements UserRepository {}
 

@@ -20,6 +20,8 @@ class WeatherService {
     return results.map((e) => Weather.fromJson(e)).toList();
   }
 
-  Uri buildIconUrl(String icon) => Uri.parse('http://openweathermap.org/img/w/$icon.png');
-  Uri buildUrl() => Uri.parse('https://api.openweathermap.org/data/2.5/forecast?q=$_cityName&appid=$_apiKey&units=metric');
+  Uri buildIconUrl(String icon) =>
+      Uri.parse('http://openweathermap.org/img/w/$icon.png');
+  Uri buildUrl() => Uri.parse(
+      'https://api.openweathermap.org/data/2.5/forecast?q=$_cityName&appid=$_apiKey&units=metric');
 }

@@ -18,13 +18,15 @@ void main() {
     GetIt.I.registerSingleton<AuthenticationService>(
       authenticationRepository,
     );
-    when(() => authenticationRepository.status).thenAnswer(
-      (_) => const Stream.empty(),
-    );
-
     userRepository = MockUserRepository();
     GetIt.I.registerSingleton<UserRepository>(
       userRepository,
+    );
+  });
+
+  setUp(() {
+    when(() => authenticationRepository.status).thenAnswer(
+      (_) => const Stream.empty(),
     );
   });
 

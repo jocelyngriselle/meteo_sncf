@@ -15,7 +15,8 @@ class WeatherService {
     if (statusCode != 200) {
       return null;
     }
-    final results = _decoder.convert(jsonBody)?['list'] as List;
+    final results =
+        (_decoder.convert(jsonBody) as Map<String, dynamic>)['list'] as List;
     if (results.isEmpty) return null;
     return results.map((e) => Weather.fromJson(e)).toList();
   }

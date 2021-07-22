@@ -37,7 +37,7 @@ void main() {
               email: 'email@email.com',
               password: 'password',
             ),
-          ).thenAnswer((_) => Future.value('user'));
+          ).thenAnswer((_) => Future.value());
           return loginBloc;
         },
         act: (bloc) {

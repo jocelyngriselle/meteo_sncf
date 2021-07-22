@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "weathersAppBarTitle": "Welcome XXX",
+    "@weathersAppBarTitle": {
+        "description": "Text shown in the AppBar of the Weathers Page"
+    }
+}
